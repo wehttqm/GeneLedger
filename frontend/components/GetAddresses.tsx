@@ -26,11 +26,9 @@ export function GetAddresses() {
       <Button onClick={onClickButton}>Get Addresses</Button>
       {Array.isArray(addresses) && (
         <div className="flex flex-col space-y-4 items-center">
-          {(addresses as string[])
-            .filter((addr): addr is `0x${string}` => typeof addr === "string" && addr.startsWith("0x"))
-            .map((addr) => (
-              <AddressView key={addr} addr={addr} />
-            ))}
+          {addresses.map((addr) => {
+            return <AddressView key={addr} addr={addr}/>
+          })}
         </div>
       )}
     </div>
