@@ -1,10 +1,10 @@
 [package]
-name = "GeneLedger"
+name = "MessageBoard"
 version = "1.0.0"
 authors = []
 
 [addresses]
-gene_ledger_addr = "_"
+message_board_addr = "_"
 
 [dependencies]
 AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", rev = "mainnet", subdir = "aptos-framework" }

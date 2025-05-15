@@ -15,7 +15,7 @@ module message_board_addr::message_board {
 
     // This function is only called once when the module is published for the first time.
     // init_module is optional, you can also have an entry function as the initializer.
-    fun init_module(sender: &signer) {
+    public entry fun init_module(sender: &signer) {
         let constructor_ref = &object::create_named_object(sender, BOARD_OBJECT_SEED);
         move_to(&object::generate_signer(constructor_ref), BoardObjectController {
             extend_ref: object::generate_extend_ref(constructor_ref),

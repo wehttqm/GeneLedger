@@ -5,9 +5,10 @@ import { Header } from "@/components/Header";
 import { WalletDetails } from "@/components/WalletDetails";
 import { NetworkInfo } from "@/components/NetworkInfo";
 import { AccountInfo } from "@/components/AccountInfo";
-import { TransferAPT } from "@/components/TransferAPT";
-import { MessageBoard } from "@/components/MessageBoard";
 import { TopBanner } from "@/components/TopBanner";
+import { PostAddress } from "./components/PostAddress";
+import { SetMerkle } from "./components/SetMerkle";
+import { GetAddresses } from "./components/GetAddresses";
 
 function App() {
   const { connected } = useWallet();
@@ -23,8 +24,9 @@ function App() {
               <WalletDetails />
               <NetworkInfo />
               <AccountInfo />
-              <TransferAPT />
-              <MessageBoard />
+              <GetAddresses />
+              <SetMerkle />
+              <PostAddress />
             </CardContent>
           </Card>
         ) : (

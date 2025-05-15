@@ -2,7 +2,7 @@ require("dotenv").config();
 const fs = require("node:fs");
 
 const modules = [
-  { address: process.env.VITE_MODULE_ADDRESS, name: "message_board" },
+  { address: process.env.VITE_MODULE_ADDRESS, name: "GeneLedger" },
   { address: "0x1", name: "coin" },
 ];
 
