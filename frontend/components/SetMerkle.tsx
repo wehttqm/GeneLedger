@@ -17,6 +17,33 @@ export function SetMerkle() {
   const [string, setString] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
+  const PostAddress = async () => {
+    if (!client) {
+      return;
+    }
+
+    try {
+      const committedTransaction = await client
+        .useABI(GENELEDGER_ABI)
+        .post_address({
+          type_arguments: [],
+          arguments: [],
+        });
+      const executedTransaction = await aptosClient().waitForTransaction({
+        transactionHash: committedTransaction.hash,
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["message-content"],
+      });
+      toast({
+        title: "Success",
+        description: `Transaction succeeded, hash: ${executedTransaction.hash}`,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       setSelectedFile(event.target.files[0]);
@@ -100,6 +127,9 @@ export function SetMerkle() {
         title: "Success",
         description: `Transaction succeeded, hash: ${executedTransaction.hash}`,
       });
+
+      // Put this user in the global list of matchers
+      PostAddress();
     } catch (error) {
       console.error(error);
     }
