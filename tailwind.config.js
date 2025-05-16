@@ -72,6 +72,7 @@ module.exports = {
       fontFamily: {
         sans: ["sans-serif"],
         inter: ["Inter", "sans-serif"],
+        saira: ["Besley", "sans-serif"],
       },
       fontSize: {
         12: "0.75rem",

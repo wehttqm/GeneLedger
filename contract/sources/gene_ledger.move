@@ -9,8 +9,9 @@ module gene_ledger_addr::GeneLedger {
     }
 
     struct Entry has key {
-        merkle_root: str
+        merkle_root: vector<u8>,
         date: u64,
+        snp_hashes: vector<vector<u8>>,
         called: bool,
     }
 
@@ -53,17 +54,20 @@ module gene_ledger_addr::GeneLedger {
     public entry fun store_entry(
         user: &signer,
         merkle_root: vector<u8>,
+        snp_hashes: vector<vector<u8>>,
         date: u64,
     ) acquires Entry {
         if (!exists<Entry>(signer::address_of(user))) {
             move_to(user, Entry {
                 merkle_root,
                 date,
+                snp_hashes,
                 called: false,
             });
         } else {
             let entry = borrow_global_mut<Entry>(signer::address_of(user));
             entry.merkle_root = merkle_root;
+            entry.snp_hashes = snp_hashes;
             entry.date = date;
         }
     }
@@ -82,9 +86,9 @@ module gene_ledger_addr::GeneLedger {
     }
 
     #[view]
-    public fun get_entry(user_addr: address): (vector<u8>, u64) acquires Entry {
+    public fun get_entry(user_addr: address): (vector<u8>, vector<vector<u8>>, u64) acquires Entry {
         let entry = borrow_global<Entry>(user_addr);
-        (entry.merkle_root, entry.date)
+        (entry.merkle_root, entry.snp_hashes, entry.date)
     }
 
     #[view]

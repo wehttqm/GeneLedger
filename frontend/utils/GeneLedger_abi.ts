@@ -1,5 +1,5 @@
 export const GENELEDGER_ABI = {
-  address: "0x472e5d8b044be928eef64cc47f37376277c4fd5c1c3b984c206597f10230dfe8",
+  address: "0x8e82cae5ef915df0a3406cf36777da0b13418a453b97267696cf660f044b51cf",
   name: "GeneLedger",
   friends: [],
   exposed_functions: [
@@ -37,7 +37,7 @@ export const GENELEDGER_ABI = {
       is_view: true,
       generic_type_params: [],
       params: ["address"],
-      return: ["vector<u8>", "u64"],
+      return: ["vector<u8>", "vector<vector<u8>>", "u64"],
     },
     {
       name: "post_address",
@@ -54,7 +54,7 @@ export const GENELEDGER_ABI = {
       is_entry: true,
       is_view: false,
       generic_type_params: [],
-      params: ["&signer", "vector<u8>", "u64"],
+      params: ["&signer", "vector<u8>", "vector<vector<u8>>", "u64"],
       return: [],
     },
   ],
@@ -68,6 +68,7 @@ export const GENELEDGER_ABI = {
       fields: [
         { name: "merkle_root", type: "vector<u8>" },
         { name: "date", type: "u64" },
+        { name: "snp_hashes", type: "vector<vector<u8>>" },
         { name: "called", type: "bool" },
       ],
     },
