@@ -8,3 +8,9 @@ Gene Ledger is a privacy first Ancestry service that has its data decentralized,
 Typescript/Tanstack/Vite frontend to host. The backend we have to process data is a Python FastAPI, and the IPFS database used is from Pinata. 
 
 Aptos blockchain was used for verification and encryption of the data, primarily to track relationships between DNA samples and other data, stored per-account, which is a very important feature that enabled us to store sensitive keys on the blockchain that is accessible to the user but no one else.
+
+## Screenshots
+
+![alt text](https://github.com/wehttqm/GeneLedger/blob/master/images/1.png?raw=true)
+
+![alt text](https://github.com/wehttqm/GeneLedger/blob/master/images/2.png?raw=true)
