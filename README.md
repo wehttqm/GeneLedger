@@ -1,4 +1,4 @@
-Where is the demo video?? In progress uploading! Come back please in 10 minutes.
+Where is the demo video?? HERE! https://www.youtube.com/watch?v=LwwwnD3LV9E
 # What is Gene Ledger?
 In the age of data, I do not believe we should let DNA become just another data point to sell people targeted drugs and predict behaviour. That said, ancestry services are really cool and can be used to improve health and proactively prevent disease, but it is at the cost of your data. Gene Ledger wants to fix this. 
 
