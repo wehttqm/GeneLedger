@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { getEntry } from "@/view-functions/getEntry";
 import { Card, CardContent } from "./ui/card";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { Table, TableBody, TableCell, TableRow } from "./ui/table";
 
 type Match = {
   id: string;
@@ -34,6 +35,7 @@ export const Match = () => {
   const getMatches = async () => {
     const pointer = await getPointer();
     if (pointer) {
+      console.log("pointer retrieved");
       const res = await fetch(`http://localhost:8000/get/$${pointer}`, {
         method: "post",
       });
@@ -41,17 +43,44 @@ export const Match = () => {
       if (matches) {
         setMatches(matches);
       }
+    } else {
+      console.log("Error: pointer not defined");
     }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center space-y-4">
       <Button onClick={getMatches}>Compute Matches</Button>
+      {matches.length > 0 &&
+        `Generated ${matches.length} match${matches.length > 1 && "es"}.`}
       {matches.map((match) => {
         return (
           <div key={JSON.stringify(match)}>
             <Card>
-              <CardContent className="">{JSON.stringify(match)}</CardContent>
+              <CardContent className="">
+                <Table className="flex">
+                  <TableBody className="w-full">
+                    <TableRow className="w-full">
+                      <TableCell className="font-medium w-full">
+                        Pointer
+                      </TableCell>
+                      <TableCell>{match.id}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Predicted Relationship
+                      </TableCell>
+                      <TableCell>{match.relationship}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">
+                        Kinship Relationship Score
+                      </TableCell>
+                      <TableCell>{match.shared_dna}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
             </Card>
           </div>
         );
