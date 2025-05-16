@@ -8,11 +8,7 @@ export const Upload = () => {
       <div className="absolute flex flex-col left-0 bottom-0 p-2">
         <span>Notes</span>
         <span>
-          1) The "Pointer" field doesnt do anything yet, just there to test the
-          contract
-        </span>
-        <span>
-          2) File upload expects a specific format. You can download an example{" "}
+          1) File upload expects a specific format. You can download an example{" "}
           <a href="/test_dna.txt" download="test_dna.txt" className="underline">
             here
           </a>
