@@ -52,7 +52,7 @@ export const Match = () => {
     <div className="flex flex-col justify-center items-center space-y-4">
       <Button onClick={getMatches}>Compute Matches</Button>
       {matches.length > 0 &&
-        `Generated ${matches.length} match${matches.length > 1 && "es"}.`}
+        `Generated ${matches.length} match${matches.length > 1 ? "es" : ""}.`}
       {matches.map((match) => {
         return (
           <div key={JSON.stringify(match)}>
